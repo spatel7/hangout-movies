@@ -24,6 +24,7 @@
 <!--
 body {
   background-color: #181818;
+  margin: 5px;
 }
 .button {
   border-radius: 3px;
@@ -43,7 +44,8 @@ body {
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
-<font color='#f0f0f0'>Hangouts <b>with Movies</b></font></h3>
+<font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
+<font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font>
 
 <script>
 function showParticipants() {
