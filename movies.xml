@@ -47,7 +47,7 @@ body {
 <font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
 <font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#f0f0f0">Choose the movie!</font><br>
-<input type='dropbox-chooser' id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+<input type='button' id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
 <script type='text/javascript'>
   options = {
 
