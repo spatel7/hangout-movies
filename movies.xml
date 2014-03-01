@@ -43,7 +43,7 @@ body {
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
-<font color='#f0f0f0'>Hangout <b>with Movies</b></font></h3>
+<font color='#f0f0f0'>Hangouts <b>with Movies</b></font></h3>
 
 <script>
 function showParticipants() {
