@@ -20,6 +20,8 @@
 	<Content type="html"><![CDATA[     
 
 <html>
+<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
 <!--
 body {
@@ -41,9 +43,6 @@ body {
 -->
 </style>
 <body>
-
-<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 
 <font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
 <font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
@@ -99,43 +98,6 @@ file = {
     thumbnailLink: "https://...?bounding_box=75&mode=fit",
 };
 
-</script>
-
-<script>
-function showParticipants() {
-  var participants = gapi.hangout.getParticipants();
-
-  var retVal = '<p>Participants: </p><ul>';
-
-  for (var index in participants) {
-    var participant = participants[index];
-
-    if (!participant.person) {
-      retVal += '<li>A participant not running this app</li>';
-    }
-    retVal += '<li>' + participant.person.displayName + '</li>';
-  }
-
-  retVal += '</ul>';
-
-  var div = document.getElementById('participantsDiv');
-
-  div.innerHTML = retVal;
-}
-
-function init() {
-  // When API is ready...                                                         
-  gapi.hangout.onApiReady.add(
-      function(eventObj) {
-        if (eventObj.isApiReady) {
-          document.getElementById('showParticipants')
-            .style.visibility = 'visible';
-        }
-      });
-}
-
-// Wait for gadget to load.                                                       
-gadgets.util.registerOnLoadHandler(init);
 </script>
 </body>
 ]]>
