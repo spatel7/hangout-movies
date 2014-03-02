@@ -41,7 +41,7 @@ body {
 }
 #main #selection {
     display: block;
-    margin-top: 120px;
+    margin-top: 130px;
 }
 #main #back {
     display: none;
