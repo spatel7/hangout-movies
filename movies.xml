@@ -60,6 +60,11 @@ body {
 </style>
 <script type='text/javascript'>
 
+    function add_button() {
+        var button = Dropbox.createChooseButton(options);
+        document.getElementById("selection").appendChild(button);
+    }
+
     function vpause() {
         gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
     }
@@ -121,13 +126,12 @@ body {
     };
 
 </script>
-<body>
+<body onPageLoad="javascript:add_button();">
     <div id='main'>
         <div id='selection'>
             <font color='#181818' size='7'>Movies <b>with Friends</b></font><br>
             <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818"><b>Step one: </b> pick a movie!</font><br>
-            <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Pick a movie!" />
         </div>
         <div id='back'>
             <a href='#' onclick="javascript:toggleMovie('selection');">Return to main page</a>
