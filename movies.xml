@@ -49,7 +49,12 @@ body {
 <body>
 <<<<<<< HEAD
 
+<video id="mn_player" class="video-js vjs-default-skin"
+  controls preload="auto" width="640" height="360">
+</video>
+<br>
 
+<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-link-type="direct"/>
 
 
 =======
