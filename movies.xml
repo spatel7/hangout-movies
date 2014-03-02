@@ -93,8 +93,9 @@ body {
             } else {
                 document.getElementById('vidplayer').pause();
             }
-        } else {
+        } else if(state['media_change'] == "false") {
             add_movie(state['link'])
+        } else {
         }
     } );
 
