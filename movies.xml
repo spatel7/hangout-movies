@@ -28,7 +28,6 @@ body {
   background-color: #e8e8e8;
   background-image:url('http://www.momorialcards.com/images/light_textured_backround.jpg');
   background-repeat:no-repeat;
-  background-opacity: 0.2;
 }
 #main {
     margin: 0 auto;
