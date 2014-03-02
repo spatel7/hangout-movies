@@ -55,6 +55,15 @@ body {
 <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#181818">Choose the movie!</font><br>
 <script type='text/javascript'>
+    gapi.hangout.data.onStateChanged.add( function(event) {
+        var state = gapi.hangout.data.getState();
+        document.getElementById('movie').style.display = state['display'];
+        var l = state['l'];
+        var src = "<video width='320' height='240' controls>";
+        src += "<source src="+ l +" type='video/mp4'>";
+        src += "</video>";
+        document.getElementById('movie').innerHTML = src;
+    } );
   options = {
 
     // Required. Called when a user selects an item in the Chooser.
@@ -65,6 +74,7 @@ body {
         src += "<source src="+ l +" type='video/mp4'>";
         src += "</video>";
         document.getElementById('movie').innerHTML = src;
+        gapi.hangout.data.submitDelta( {"display": "block", "link": l} );
     },
 
     // Optional. Called when the user closes the dialog without selecting a file
