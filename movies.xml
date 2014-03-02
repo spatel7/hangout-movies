@@ -61,10 +61,10 @@ body {
 <script type='text/javascript'>
 
     function vpause() {
-        gapi.hangout.data.submitDelta( {"state": "pause", "media_change": "true"} );
+        gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
     }
     function vplay() {
-        gapi.hangout.data.submitDelta( {"state": "play", "media_change": "true"} );
+        gapi.hangout.data.submitDelta( {"action": "media_change", "state": "play"} );
     }
     function add_movie(link) {
         var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'><source src='"+ link +"' type='video/mp4'></video>";
@@ -81,28 +81,31 @@ body {
             selection.style.display = "none";
         } else {
             movie.style.display = "none";
+            movie.innerHTML = "";
             back.style.display = "none";
             selection.style.display = "block";
+            gapi.hangout.data.submitDelta( {"action": "go_back"} );
         }
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
-        if (state['media_change'] == "true") {
+        if (state['action'] == "media_change") {
             if (state['state'] == "play") {
                 document.getElementById('vidplayer').play();
             } else {
                 document.getElementById('vidplayer').pause();
             }
-        } else if(state['media_change'] == "false") {
-            add_movie(state['link'])
-        } else {
+        } else if(state['action'] == "add_movie") {
+            add_movie(state['link']);
+        } else if(state['action'] == "go_back") {
+            toggleMovie('selection');
         }
     } );
 
     options = {
         success: function(files) {
             add_movie(files[0].link);
-            gapi.hangout.data.submitDelta( {"link": files[0].link, "media_change": "false"} );
+            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link} );
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
@@ -123,9 +126,9 @@ body {
     <div id='main'>
         <div id='selection'>
             <font color='#181818' size='7'>Movies <b>with Friends</b></font><br>
-            <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br>
-            <font color="#181818">Choose your movie!</font><br>
-            <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+            <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
+            <font color="#181818"><b>Step one: </b> pick a movie!</font><br>
+            <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Pick a movie!" />
         </div>
         <div id='back'>
             <a href='#' onclick="javascript:toggleMovie('selection');">Return to main page</a>
