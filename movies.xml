@@ -59,6 +59,9 @@ body {
 -->
 </style>
 <script type='text/javascript'>
+    var remote_owner;
+    var participants;
+    var my_id;
     function vpause() {
         gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
     }
@@ -88,7 +91,17 @@ body {
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
-        if (state['action'] == "media_change") {
+        partipants = gapi.hangout.data.getEnabledParticipants();
+        my_id = gapi.hangout.data.getLocalParticipantId();
+        if (state['remote_owner'] === undefined) {
+            remote_owner = my_id;
+            gapi.hangout.data.submitDelta( {"action": "add_remote_owner", "remote_owner": my_id} );
+        } else {
+            remote_owner = state['remote_owner'];
+        }
+        if (state['action'] == "change_remote_owner") {
+            remote_owner = state['remote_owner'];
+        } else if (state['action'] == "media_change") {
             if (state['state'] == "play") {
                 document.getElementById('vidplayer').play();
             } else {
@@ -120,8 +133,14 @@ body {
     };
 
     function add_button() {
-        var button = Dropbox.createChooseButton(options);
-        document.getElementById("selection").appendChild(button);
+        if (remote_owner == my_id) {
+            var button = Dropbox.createChooseButton(options);
+            document.getElementById("selection").appendChild(button);
+        } else {
+            var owner_name = gapi.hangout.data.getParticipantById(remote_owner).displayName;
+            var span = "<b>" + owner_name + "</b> will choose the movie."
+            document.getElementById("selection").appendChild(span);
+        }
     }
 </script>
 <body onLoad="javascript:add_button();">
