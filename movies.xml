@@ -28,6 +28,10 @@ body {
   background-color: #181818;
   margin: 15px;
 }
+#main {
+    margin: 0 auto;
+    width: 700px;
+}
 .button {
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -43,7 +47,7 @@ body {
 -->
 </style>
 <body>
-
+<<<<<<< HEAD
 
 <video id="mn_player" class="video-js vjs-default-skin"
   controls preload="auto" width="640" height="360">
@@ -53,11 +57,13 @@ body {
 <input type="dropbox-chooser" name="selected-file" id="db-chooser" data-link-type="direct"/>
 
 
+=======
+<div id='main'>
+>>>>>>> d788083ed3f6fb057a354a8088ad79390a69c682
 <font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
 <font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#f0f0f0">Choose the movie!</font><br>
 <script type='text/javascript'>
-    alert(window.location.hostname);
   options = {
 
     // Required. Called when a user selects an item in the Chooser.
@@ -109,6 +115,7 @@ file = {
 
 </script>
 <input type='button' id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+</div>
 </body>
 ]]>
 </Content>
