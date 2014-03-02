@@ -47,16 +47,7 @@ body {
 -->
 </style>
 <body>
-<<<<<<< HEAD
-
-<input type="dropbox-chooser" name="selected-file" id="db-chooser" data-link-type="direct"/>
-
-
-
-
-=======
 <div id='main'>
->>>>>>> d788083ed3f6fb057a354a8088ad79390a69c682
 <font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
 <font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#f0f0f0">Choose the movie!</font><br>
@@ -111,7 +102,7 @@ file = {
 };
 
 </script>
-<input type='button' id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+<input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
 </div>
 </body>
 ]]>
