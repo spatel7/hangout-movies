@@ -109,7 +109,7 @@ body {
 
     options = {
         success: function(files) {
-            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link, "curr_time": vidplayer.currentTime} );
+            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link, "curr_time": document.getElementById('vidplayer').currentTime} );
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
