@@ -26,7 +26,6 @@
 <!--
 body {
   background-color: #e8e8e8;
-  margin: 15px;
 }
 #main {
     margin: 0 auto;
@@ -51,7 +50,7 @@ body {
 </style>
 <body>
 <div id='main'>
-<font color='#181818' size='7'>Hangouts <b>with Movies</b></font><br>
+<font color='#181818' size='7'>Movies <b>with Friends</b></font><br>
 <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#181818">Choose the movie!</font><br>
 <script type='text/javascript'>
@@ -139,16 +138,6 @@ file = {
 
 </script>
 <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
-
-<div id='movies' style='display: none;'>
-    <video width="640" height="360 " controls autoplay>
-        <source src="movie.ogg" type="video/ogg">
-        <source src="movie.mp4" type="video/mp4">
-        <object data="movie.mp4" width="640" height="360">
-            <embed width="640" height="360" src="movie.swf">
-        </object>
-    </video>
-</div>
 </div>
 </body>
 ]]>
