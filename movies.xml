@@ -134,6 +134,7 @@ body {
     };
 
     function add_button() {
+        alert("I am here with remote_owner: " + remote_owner + " and my_id: " + my_id);
         if (remote_owner == my_id) {
             var button = Dropbox.createChooseButton(options);
             document.getElementById("selection").appendChild(button);
