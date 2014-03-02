@@ -28,8 +28,7 @@ body {
   background-color: #e8e8e8;
   /*background-image:url('http://www.momorialcards.com/images/light_textured_backround.jpg');*/
   background-image:url('http://downloads.xdesktopwallpapers.com/wp-content/uploads/2011/05/Color-Abstract-Background.jpg');
-  background-image:url('http://thumbs.dreamstime.com/z/grunge-scratched-film-strip-reel-background-dirty-35264187.jpg');
-}
+  background-image:url('http://thumbs.dreamstime.com/z/grunge-scratched-film-strip-reel-background-dirty-35264187.jpg');}
 #main {
     margin: 0 auto;
     width: 700px;
@@ -124,7 +123,7 @@ body {
 
     function add_button() {
         var button = Dropbox.createChooseButton(options);
-        document.getElementById("selection").appendChild(button);
+        document.getElementById("button2").appendChild(button);
     }
 </script>
 <body onLoad="javascript:add_button();">
@@ -133,6 +132,7 @@ body {
             <font color='#181818' style='font-size: 60px;'>Movies <b>with Friends</b></font><br>
             <font color='#181818' style='font-size: 30px;'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818" style='font-size: 30px;'><b>Step one: </b> pick a movie!</font><br>
+            <div id='button2' style='padding:3px; background-color:#a0a0a0;'></div>
         </div>
         <div id='back'>
             <a href='#' onclick="javascript:toggleMovie('selection');"><font color='white'>Return to main page</font></a>
