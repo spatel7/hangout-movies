@@ -38,6 +38,7 @@ body {
 #main #selection {
     display: block;
     margin-top: 10px;
+    text-align: middle;
 }
 #main #back {
     display: none;
