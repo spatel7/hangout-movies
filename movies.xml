@@ -59,7 +59,7 @@ body {
         var state = gapi.hangout.data.getState();
         document.getElementById('movie').style.display = state['display'];
         var l = state['link'];
-        var src = "<video width='320' height='240' controls>";
+        var src = "<video width='320' height='240' controls autoplay>";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>"
         src += "<br>"+l;
@@ -71,7 +71,7 @@ body {
     success: function(files) {
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
-        var src = "<video width='320' height='240' controls>";
+        var src = "<video width='320' height='240' controls autoplay>";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
@@ -88,7 +88,7 @@ body {
     // Optional. "preview" (default) is a preview link to the document for sharing,
     // "direct" is an expiring link to download the contents of the file. For more
     // information about link types, see Link types below.
-    linkType: "preview", // or "direct"
+    linkType: "direct", // or "direct"
 
     // Optional. A value of false (default) limits selection to a single file, while
     // true enables multiple file selection.
