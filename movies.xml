@@ -141,11 +141,11 @@ file = {
 <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
 
 <div id='movie'>
-    <video width="320" height="240" controls autoplay>
+    <video width="640" height="360 " controls autoplay>
         <source src="movie.ogg" type="video/ogg">
         <source src="movie.mp4" type="video/mp4">
-        <object data="movie.mp4" width="320" height="240">
-            <embed width="320" height="240" src="movie.swf">
+        <object data="movie.mp4" width="640" height="360">
+            <embed width="640" height="360" src="movie.swf">
         </object>
     </video>
 </div>
