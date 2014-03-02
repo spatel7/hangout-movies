@@ -138,6 +138,8 @@ file = {
 
 </script>
 <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+
+<div id='movie'></div>
 </div>
 </body>
 ]]>
