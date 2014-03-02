@@ -25,7 +25,7 @@
 <style type="text/css">
 <!--
 body {
-  background-color: #181818;
+  background-color: #e8e8e8;
   margin: 15px;
 }
 #main {
@@ -48,9 +48,9 @@ body {
 </style>
 <body>
 <div id='main'>
-<font color='#f0f0f0' size='7'>Hangouts <b>with Movies</b></font><br>
-<font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
-<font color="#f0f0f0">Choose the movie!</font><br>
+<font color='#181818' size='7'>Hangouts <b>with Movies</b></font><br>
+<font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
+<font color="#181818">Choose the movie!</font><br>
 <script type='text/javascript'>
   options = {
 
