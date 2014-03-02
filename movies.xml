@@ -74,7 +74,7 @@ body {
         } else {
             document.getElementById('movie').style.display = state['display'];
             var l = state['link'];
-            var src = "<video id='vidplayer' width='320' height='240' controls onpause='javascript:vpause();' onplay='javascript:vplay();'>";
+            var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'>";
             src += "<source src='"+ l +"' type='video/mp4'>";
             src += "</video>"
             src += "<br>"+l;
@@ -87,7 +87,7 @@ body {
     success: function(files) {
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
-        var src = "<video id='vidplayer' width='320' height='240' controls onpause='javascript:vpause();' onplay='javascript:vplay();'>";
+        var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'>";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
@@ -140,7 +140,7 @@ file = {
 </script>
 <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
 
-<div id='movie'>
+<div id='movies' style='display: none;'>
     <video width="640" height="360 " controls autoplay>
         <source src="movie.ogg" type="video/ogg">
         <source src="movie.mp4" type="video/mp4">
