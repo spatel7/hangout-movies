@@ -5,19 +5,19 @@
  * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
- *	
+ *  
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License
 -->
-	<ModulePrefs title="Hangout Starter">
-		<Require feature="rpc" />
-		<Require feature="views" />
-		<Require feature="locked-domain" />
-	</ModulePrefs>
-	<Content type="html"><![CDATA[     
+    <ModulePrefs title="Hangout Starter">
+        <Require feature="rpc" />
+        <Require feature="views" />
+        <Require feature="locked-domain" />
+    </ModulePrefs>
+    <Content type="html"><![CDATA[     
 
 <html>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
@@ -53,25 +53,20 @@ body {
 }
 
 .button:active {
-	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
-	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
+    background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
+    background: -moz-linear-gradient(bottom, #ddd, #aaa); }
 
 -->
 </style>
 <script type='text/javascript'>
-
     function vpause() {
         gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
     }
     function vplay() {
         gapi.hangout.data.submitDelta( {"action": "media_change", "state": "play"} );
     }
-    function vSet(){
-      var time = document.getElementById('vidplayer').currentTime;
-      gapi.hangout.data.submitDelta({"action": "media_change", "state": "scrubbed", "curr_time": time});
-    }
     function add_movie(link) {
-        var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' seeked='javascript:vSet();' onplay='javascript:vplay();'><source src='"+ link +"' type='video/mp4'></video>";
+        var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'><source src='"+ link +"' type='video/mp4'></video>";
         movie.innerHTML = src;
         toggleMovie('movie');
     }
@@ -96,8 +91,6 @@ body {
         if (state['action'] == "media_change") {
             if (state['state'] == "play") {
                 document.getElementById('vidplayer').play();
-            } else if (state['state'] == "scrubbed"){
-                document.getElementById('vidplayer').currentTime = state['curr_time'];
             } else {
                 document.getElementById('vidplayer').pause();
             }
@@ -110,8 +103,7 @@ body {
 
     options = {
         success: function(files) {
-            add_movie(files[0].link);
-            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link, "curr_time": vidplayer.currentTime} );
+            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link} );
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
@@ -127,14 +119,17 @@ body {
         thumbnailLink: "https://...?bounding_box=75&mode=fit",
     };
 
+    function add_button() {
+        var button = Dropbox.createChooseButton(options);
+        document.getElementById("selection").appendChild(button);
+    }
 </script>
-<body>
+<body onLoad="javascript:add_button();">
     <div id='main'>
         <div id='selection'>
             <font color='#181818' size='7'>Movies <b>with Friends</b></font><br>
             <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818"><b>Step one: </b> pick a movie!</font><br>
-            <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Pick a movie!" />
         </div>
         <div id='back'>
             <a href='#' onclick="javascript:toggleMovie('selection');">Return to main page</a>
@@ -145,4 +140,3 @@ body {
 ]]>
 </Content>
 </Module>
-
