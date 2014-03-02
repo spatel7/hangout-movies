@@ -90,15 +90,17 @@ body {
         }
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
+        alert("The state has been changed.");
         var state = gapi.hangout.data.getState();
-        partipants = gapi.hangout.data.getEnabledParticipants();
-        my_id = gapi.hangout.data.getLocalParticipantId();
-        alert(state['remote_owner']);
+        partipants = gapi.hangout.getEnabledParticipants();
+        my_id = gapi.hangout.getLocalParticipantId();
         if (state['remote_owner'] === undefined) {
             remote_owner = my_id;
             gapi.hangout.data.submitDelta( {"action": "add_remote_owner", "remote_owner": my_id} );
+            add_button();
         } else {
             remote_owner = state['remote_owner'];
+            add_button();
         }
         if (state['action'] == "change_remote_owner") {
             remote_owner = state['remote_owner'];
