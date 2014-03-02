@@ -39,8 +39,6 @@ body {
     margin-top: 5px;
 }
 #main #selection {
-    background-color: white;
-    opacity: 0.8;
     display: block;
     margin-top: 10px;
 }
