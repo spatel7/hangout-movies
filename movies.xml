@@ -58,9 +58,11 @@ body {
 
     function pause() {
         gapi.hangout.data.submitDelta( {"state": "pause", "media_change": "true"} );
+        alert("sent the new state as pause");
     }
     function play() {
         gapi.hangout.data.submitDelta( {"state": "play", "media_change": "true"} );
+        alert("sent the new state as play");
     }
 
     gapi.hangout.data.onStateChanged.add( function(event) {
@@ -74,7 +76,7 @@ body {
         } else {
             document.getElementById('movie').style.display = state['display'];
             var l = state['link'];
-            var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause='pause()' onplay='play()'>";
+            var src = "<video id='vidplayer' width='320' height='240' controls onpause='javascript:pause();' onplay='javascript:play();'>";
             src += "<source src='"+ l +"' type='video/mp4'>";
             src += "</video>"
             src += "<br>"+l;
@@ -87,7 +89,7 @@ body {
     success: function(files) {
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
-        var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause='pause()' onplay='play()'>";
+        var src = "<video id='vidplayer' width='320' height='240' controls onpause='javascript:pause();' onplay='javascript:play();'>";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
