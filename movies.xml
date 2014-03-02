@@ -32,6 +32,9 @@ body {
     margin: 0 auto;
     width: 700px;
 }
+#main #movie {
+    display: none;
+}
 .button {
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -56,7 +59,12 @@ body {
 
     // Required. Called when a user selects an item in the Chooser.
     success: function(files) {
-        alert("Here's the file link: " + files[0].link)
+        document.getElementById('movie').style.display = "block";
+        var l = files[0].link;
+        var src = "<video width='320' height='240' controls>";
+        src += "<source src="+ l +" type='video/mp4'>";
+        src += "</video>";
+        document.getElementById('movie').innerHTML = src;
     },
 
     // Optional. Called when the user closes the dialog without selecting a file
@@ -103,6 +111,16 @@ file = {
 
 </script>
 <input type='button' class="button" id='dp-chooser' onclick="javascript:Dropbox.choose(options);" value="Choose a movie!" />
+
+<div id='movie'>
+    <video width="320" height="240" controls autoplay>
+        <source src="movie.ogg" type="video/ogg">
+        <source src="movie.mp4" type="video/mp4">
+        <object data="movie.mp4" width="320" height="240">
+            <embed width="320" height="240" src="movie.swf">
+        </object>
+    </video>
+</div>
 </div>
 </body>
 ]]>
