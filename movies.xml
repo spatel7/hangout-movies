@@ -26,6 +26,8 @@
 <!--
 body {
   background-color: #e8e8e8;
+  background-image:url('http://www.momorialcards.com/images/light_textured_backround.jpg');
+  background-repeat:no-repeat;
 }
 #main {
     margin: 0 auto;
@@ -38,7 +40,6 @@ body {
 #main #selection {
     display: block;
     margin-top: 10px;
-    text-align: center;
 }
 #main #back {
     display: none;
