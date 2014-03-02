@@ -132,7 +132,7 @@ body {
             <font color='#181818' style='font-size: 60px;'>Movies <b>with Friends</b></font><br>
             <font color='#181818' style='font-size: 30px;'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818" style='font-size: 30px;'><b>Step one: </b> pick a movie!</font><br>
-            <div id='button2' style='padding:3px; background-color:#a0a0a0; width: 240px;'></div>
+            <div id='button2' style='padding:3px; background-color:#a0a0a0; width: 165px;'></div>
         </div>
         <div id='back'>
             <a href='#' onclick="javascript:toggleMovie('selection');"><font color='white'>Return to main page</font></a>
