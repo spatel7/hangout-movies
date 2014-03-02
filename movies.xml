@@ -58,9 +58,9 @@ body {
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
         document.getElementById('movie').style.display = state['display'];
-        var l = state['l'];
+        var l = state['link'];
         var src = "<video width='320' height='240' controls>";
-        src += "<source src="+ l +" type='video/mp4'>";
+        src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>"
         src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
@@ -72,7 +72,7 @@ body {
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
         var src = "<video width='320' height='240' controls>";
-        src += "<source src="+ l +" type='video/mp4'>";
+        src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
