@@ -57,17 +57,17 @@ body {
 <script type='text/javascript'>
 
     function pause() {
-        gapi.hangout.data.submitDelta( {"state": "pause", "media_change": true} );
+        gapi.hangout.data.submitDelta( {"state": "pause", "media_change": "true"} );
     }
     function play() {
-        gapi.hangout.data.submitDelta( {"state": "play", "media_change": true} );
+        gapi.hangout.data.submitDelta( {"state": "play", "media_change": "true"} );
     }
 
     gapi.hangout.data.onStateChanged.add( function(event) {
         alert("got a new state");
         var state = gapi.hangout.data.getState();
         alert(state['media_change']);
-        if (state['media_change']) {
+        if (state['media_change'] == "true") {
             if (state['state'] == "play") {
                 document.getElementById('vidplayer').play();
             } else {
@@ -96,7 +96,7 @@ body {
         src += "</video>";
         src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
-        gapi.hangout.data.submitDelta( {"display": "block", "link": l, "media_change": false} );
+        gapi.hangout.data.submitDelta( {"display": "block", "link": l, "media_change": "false"} );
     },
 
     // Optional. Called when the user closes the dialog without selecting a file
