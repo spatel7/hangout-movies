@@ -59,12 +59,6 @@ body {
 -->
 </style>
 <script type='text/javascript'>
-
-    function add_button() {
-        var button = Dropbox.createChooseButton(options);
-        document.getElementById("selection").appendChild(button);
-    }
-
     function vpause() {
         gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
     }
@@ -125,6 +119,10 @@ body {
         thumbnailLink: "https://...?bounding_box=75&mode=fit",
     };
 
+    function add_button() {
+        var button = Dropbox.createChooseButton(options);
+        document.getElementById("selection").appendChild(button);
+    }
 </script>
 <body onPageLoad="javascript:add_button();">
     <div id='main'>
