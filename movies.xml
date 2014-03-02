@@ -74,7 +74,7 @@ body {
         } else {
             document.getElementById('movie').style.display = state['display'];
             var l = state['link'];
-            var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause="pause()" onplay="play()">";
+            var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause='pause()' onplay='play()'>";
             src += "<source src='"+ l +"' type='video/mp4'>";
             src += "</video>"
             src += "<br>"+l;
@@ -85,9 +85,10 @@ body {
 
     // Required. Called when a user selects an item in the Chooser.
     success: function(files) {
+        alert("video added");
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
-        var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause="pause()" onplay="play()">";
+        var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause='pause()' onplay='play()'>";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
