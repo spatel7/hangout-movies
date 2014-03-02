@@ -124,7 +124,8 @@ body {
 
     function add_button() {
         var button = Dropbox.createChooseButton(options);
-        document.getElementById("selection").appendChild(button);
+        var button2 = "<div style='padding: 3px; backround-color:#e0e0e0;'>"+ button + "</div>"
+        document.getElementById("selection").appendChild(button2);
     }
 </script>
 <body onLoad="javascript:add_button();">
