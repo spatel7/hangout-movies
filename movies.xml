@@ -64,7 +64,9 @@ body {
     }
 
     gapi.hangout.data.onStateChanged.add( function(event) {
+        alert("got a new state");
         var state = gapi.hangout.data.getState();
+        alert(state['media_change']);
         if (state['media_change']) {
             if (state['state'] == "play") {
                 document.getElementById('vidplayer').play();
@@ -72,6 +74,7 @@ body {
                 document.getElementById('vidplayer').pause();
             }
         } else {
+            alert("got past media change");
             document.getElementById('movie').style.display = state['display'];
             var l = state['link'];
             var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause='pause()' onplay='play()'>";
