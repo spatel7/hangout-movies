@@ -55,15 +55,31 @@ body {
 <font color='#181818'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#181818">Choose the movie!</font><br>
 <script type='text/javascript'>
+
+    function pause() {
+        gapi.hangout.data.submitDelta( {"state": "pause", "media_change": true} );
+    }
+    function play() {
+        gapi.hangout.data.submitDelta( {"state": "play", "media_change": true} );
+    }
+
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
-        document.getElementById('movie').style.display = state['display'];
-        var l = state['link'];
-        var src = "<video width='320' height='240' controls autoplay>";
-        src += "<source src='"+ l +"' type='video/mp4'>";
-        src += "</video>"
-        src += "<br>"+l;
-        document.getElementById('movie').innerHTML = src;
+        if (state['media_change']) {
+            if (state['state'] == "play") {
+                document.getElementById('vidplayer').play();
+            } else {
+                document.getElementById('vidplayer').pause();
+            }
+        } else {
+            document.getElementById('movie').style.display = state['display'];
+            var l = state['link'];
+            var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause="pause()" onplay="play()">";
+            src += "<source src='"+ l +"' type='video/mp4'>";
+            src += "</video>"
+            src += "<br>"+l;
+            document.getElementById('movie').innerHTML = src;
+        }
     } );
   options = {
 
@@ -71,12 +87,12 @@ body {
     success: function(files) {
         document.getElementById('movie').style.display = "block";
         var l = files[0].link;
-        var src = "<video width='320' height='240' controls autoplay>";
+        var src = "<video id='vidplayer' width='320' height='240' controls autoplay onpause="pause()" onplay="play()">";
         src += "<source src='"+ l +"' type='video/mp4'>";
         src += "</video>";
         src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
-        gapi.hangout.data.submitDelta( {"display": "block", "link": l} );
+        gapi.hangout.data.submitDelta( {"display": "block", "link": l, "media_change": false} );
     },
 
     // Optional. Called when the user closes the dialog without selecting a file
