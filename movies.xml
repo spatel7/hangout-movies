@@ -61,7 +61,8 @@ body {
         var l = state['l'];
         var src = "<video width='320' height='240' controls>";
         src += "<source src="+ l +" type='video/mp4'>";
-        src += "</video>";
+        src += "</video>"
+        src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
     } );
   options = {
@@ -73,6 +74,7 @@ body {
         var src = "<video width='320' height='240' controls>";
         src += "<source src="+ l +" type='video/mp4'>";
         src += "</video>";
+        src += "<br>"+l;
         document.getElementById('movie').innerHTML = src;
         gapi.hangout.data.submitDelta( {"display": "block", "link": l} );
     },
