@@ -37,7 +37,7 @@ body {
 }
 #main #selection {
     display: block;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 #main #back {
     display: none;
