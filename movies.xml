@@ -58,11 +58,9 @@ body {
 
     function vpause() {
         gapi.hangout.data.submitDelta( {"state": "pause", "media_change": "true"} );
-        alert("sent the new state as pause");
     }
     function vplay() {
         gapi.hangout.data.submitDelta( {"state": "play", "media_change": "true"} );
-        alert("sent the new state as play");
     }
 
     gapi.hangout.data.onStateChanged.add( function(event) {
