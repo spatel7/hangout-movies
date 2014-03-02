@@ -41,7 +41,7 @@ body {
 }
 #main #selection {
     display: block;
-    margin-top: 130px;
+    margin-top: 145px;
 }
 #main #back {
     display: none;
@@ -136,7 +136,7 @@ body {
             <font color="#181818" style='font-size: 30px;'><b>Step one: </b> pick a movie!</font><br>
         </div>
         <div id='back'>
-            <a href='#' onclick="javascript:toggleMovie('selection');">Return to main page</a>
+            <a href='#' onclick="javascript:toggleMovie('selection');"><font color='white'>Return to main page</font></a>
         </div>
         <div id='movie'></div>
     </div>
