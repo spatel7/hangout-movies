@@ -28,6 +28,7 @@ body {
   background-color: #e8e8e8;
   /*background-image:url('http://www.momorialcards.com/images/light_textured_backround.jpg');*/
   background-image:url('http://downloads.xdesktopwallpapers.com/wp-content/uploads/2011/05/Color-Abstract-Background.jpg');
+  background-image:url('http://thumbs.dreamstime.com/z/grunge-scratched-film-strip-reel-background-dirty-35264187.jpg');
   background-repeat:no-repeat;
 }
 #main {
