@@ -120,7 +120,6 @@ body {
     };
 
     function add_button() {
-        alert("Im here");
         var button = Dropbox.createChooseButton(options);
         document.getElementById("selection").appendChild(button);
     }
