@@ -120,11 +120,12 @@ body {
     };
 
     function add_button() {
+        alert("Im here");
         var button = Dropbox.createChooseButton(options);
         document.getElementById("selection").appendChild(button);
     }
 </script>
-<body onPageLoad="javascript:add_button();">
+<body onLoad="javascript:add_button();">
     <div id='main'>
         <div id='selection'>
             <font color='#181818' size='7'>Movies <b>with Friends</b></font><br>
