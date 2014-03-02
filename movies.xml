@@ -48,7 +48,6 @@ body {
 <font color='#f0f0f0'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
 <font color="#f0f0f0">Choose the movie!</font><br>
 <script type='text/javascript'>
-    alert(window.location.hostname);
   options = {
 
     // Required. Called when a user selects an item in the Chooser.
