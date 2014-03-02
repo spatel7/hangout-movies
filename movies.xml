@@ -127,7 +127,7 @@ body {
 <body onLoad="javascript:add_button();">
     <div id='main'>
         <div id='selection'>
-            <font color='#181818' style='font-size: 30px;'>Movies <b>with Friends</b></font><br>
+            <font color='#181818' style='font-size: 40px;'>Movies <b>with Friends</b></font><br>
             <font color='#181818' >Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818"><b>Step one: </b> pick a movie!</font><br>
         </div>
