@@ -69,9 +69,9 @@ body {
     function add_movie(link) {
         var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'><source src='"+ link +"' type='video/mp4'></video>";
         movie.innerHTML = src;
-        toggleSelection('movie');
+        toggleMovie('movie');
     }
-    function toggleSelection(arg) {
+    function toggleMovie(arg) {
         var movie = document.getElementById('movie');
         var back = document.getElementById('back');
         var selection = document.getElementById('selection');
