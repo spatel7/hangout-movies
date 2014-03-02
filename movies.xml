@@ -93,6 +93,7 @@ body {
         var state = gapi.hangout.data.getState();
         partipants = gapi.hangout.data.getEnabledParticipants();
         my_id = gapi.hangout.data.getLocalParticipantId();
+        alert(state['remote_owner']);
         if (state['remote_owner'] === undefined) {
             remote_owner = my_id;
             gapi.hangout.data.submitDelta( {"action": "add_remote_owner", "remote_owner": my_id} );
