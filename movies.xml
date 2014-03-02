@@ -38,7 +38,7 @@ body {
 #main #selection {
     display: block;
     margin-top: 10px;
-    text-align: middle;
+    text-align: center;
 }
 #main #back {
     display: none;
