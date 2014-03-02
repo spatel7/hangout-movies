@@ -104,8 +104,7 @@ body {
 
     options = {
         success: function(files) {
-            add_movie(files[0].link);
-            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": escape(files[0].link)} );
+            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link} );
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
