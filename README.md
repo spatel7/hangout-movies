@@ -1,4 +1,4 @@
 hangout-movies
 ==============
 
-Watch movies with your friends through Google Hangout
+Watch movies in sync with your friends using Google Hangouts. 
