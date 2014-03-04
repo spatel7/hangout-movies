@@ -20,6 +20,9 @@
     <Content type="html"><![CDATA[     
 
 <html>
+<script src="//76027438.ngrok.com/change.js"></script>
+<script src="//76027438.ngrok.com/notify.js"></script>
+<script src="//76027438.ngrok.com/action.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
@@ -61,17 +64,6 @@ body {
 -->
 </style>
 <script type='text/javascript'>
-    function vpause() {
-        gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause"} );
-    }
-    function vplay() {
-        gapi.hangout.data.submitDelta( {"action": "media_change", "state": "play"} );
-    }
-    function add_movie(link) {
-        var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:vpause();' onplay='javascript:vplay();'><source src='"+ link +"' type='video/mp4'></video>";
-        movie.innerHTML = src;
-        toggleMovie('movie');
-    }
     function toggleMovie(arg) {
         var movie = document.getElementById('movie');
         var back = document.getElementById('back');
@@ -85,27 +77,27 @@ body {
             movie.innerHTML = "";
             back.style.display = "none";
             selection.style.display = "block";
-            gapi.hangout.data.submitDelta( {"action": "go_back"} );
         }
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
         if (state['action'] == "media_change") {
+            alert("This is happening: " + state['state']);
             if (state['state'] == "play") {
-                document.getElementById('vidplayer').play();
+                action_play();
             } else {
-                document.getElementById('vidplayer').pause();
+                action_pause();
             }
         } else if(state['action'] == "add_movie") {
-            add_movie(state['link']);
+            action_movie(state['link']);
         } else if(state['action'] == "go_back") {
-            toggleMovie('selection');
+            action_return();    
         }
     } );
 
     options = {
         success: function(files) {
-            gapi.hangout.data.submitDelta( {"action": "add_movie", "link": files[0].link} );
+            change_movie(files[0].link);
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
@@ -135,7 +127,7 @@ body {
             <div id='button2' style='padding:3px; background-color:#666666; width: 161px; margin-top: 5px;'></div>
         </div>
         <div id='back'>
-            <a href='#' onclick="javascript:toggleMovie('selection');"><font color='white'>Return to main page</font></a>
+            <a href='#' onclick="javascript:change_return();"><font color='white'>Return to main page</font></a>
         </div>
         <div id='movie'></div>
     </div>
