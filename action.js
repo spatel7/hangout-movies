@@ -1,9 +1,11 @@
 function action_pause() {
 	document.getElementById("vidplayer").pause();
+	//submit new pause time
 }
 
 function action_play() {
 	document.getElementById("vidplayer").play();
+	//update difference time
 }
 
 function action_movie(link) {
@@ -11,6 +13,7 @@ function action_movie(link) {
     var movie = document.getElementById('movie');
     movie.innerHTML = src;
 	toggleMovie('movie');
+	//submitdelta with current time & start movie with difference time
 }
 
 function action_return() {
