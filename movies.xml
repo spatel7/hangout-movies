@@ -82,7 +82,6 @@ body {
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
         if (state['action'] == "media_change") {
-            alert("This is happening: " + state['state']);
             if (state['state'] == "play") {
                 action_play();
             } else {

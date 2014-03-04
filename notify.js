@@ -11,6 +11,5 @@ function notify_movie(link) {
 }
 
 function notify_return() {
-	alert("we are returning");
     gapi.hangout.data.submitDelta( {"action": "go_back"} );
 }
