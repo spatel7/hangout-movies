@@ -1,11 +1,9 @@
 function action_pause() {
 	document.getElementById("vidplayer").pause();
-	//submit new pause time
 }
 
 function action_play() {
 	document.getElementById("vidplayer").play();
-	//update difference time
 }
 
 function action_movie(link) {
@@ -13,7 +11,20 @@ function action_movie(link) {
     var movie = document.getElementById('movie');
     movie.innerHTML = src;
 	toggleMovie('movie');
-	//submitdelta with current time & start movie with difference time
+	var start_time = 0;
+	var state = gapi.hangout.data.getState();
+	document.getElementById('vidplayer').addEventListener('loadedmetadata', function() {
+		if (state['state'] == "pause") {
+			start_time = parseInt(state['pause_time']);
+		} else if (state['state'] == "play") {
+			difference = (new Date()).getTime() - parseInt(state['play_time_global']);
+			start_time = parseInt(state['play_time']) + (difference/1000);
+		}
+  		document.getElementById('vidplayer').currentTime = start_time;
+  		if (state['state'] == "play") {
+  			action_play();
+  		}
+}, false);
 }
 
 function action_return() {

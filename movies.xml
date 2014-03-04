@@ -20,9 +20,9 @@
     <Content type="html"><![CDATA[     
 
 <html>
-<script src="//rawgithub.com/spatel7/hangout-movies/master/change.js"></script>
-<script src="//rawgithub.com/spatel7/hangout-movies/master/notify.js"></script>
-<script src="//rawgithub.com/spatel7/hangout-movies/master/action.js"></script>
+<script src="//192e1cff.ngrok.com/change.js"></script>
+<script src="//192e1cff.ngrok.com/notify.js"></script>
+<script src="//192e1cff.ngrok.com/action.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
@@ -64,6 +64,7 @@ body {
 -->
 </style>
 <script type='text/javascript'>
+    var wasHereBefore = "false";
     function toggleMovie(arg) {
         var movie = document.getElementById('movie');
         var back = document.getElementById('back');
@@ -81,6 +82,11 @@ body {
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
+        if (wasHereBefore == "false" && !(state['action'] === undefined)) {
+            if (state['action'] != "go_back") {
+                action_movie(state['link']);
+            }
+        } 
         if (state['action'] == "media_change") {
             if (state['state'] == "play") {
                 action_play();
@@ -92,6 +98,7 @@ body {
         } else if(state['action'] == "go_back") {
             action_return();    
         }
+        wasHereBefore = "true";
     } );
 
     options = {
