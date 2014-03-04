@@ -20,9 +20,9 @@
     <Content type="html"><![CDATA[     
 
 <html>
-<script src="//raw.github.com/spatel7/hangout-movies/master/change.js"></script>
-<script src="//raw.github.com/spatel7/hangout-movies/master/notify.js"></script>
-<script src="//raw.github.com/spatel7/hangout-movies/master/action.js"></script>
+<script src="//rawgithub.com/spatel7/hangout-movies/master/change.js"></script>
+<script src="//rawgithub.com/spatel7/hangout-movies/master/notify.js"></script>
+<script src="//rawgithub.com/spatel7/hangout-movies/master/action.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
