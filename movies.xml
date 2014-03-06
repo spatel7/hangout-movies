@@ -20,9 +20,10 @@
     <Content type="html"><![CDATA[     
 
 <html>
-<script src="//192e1cff.ngrok.com/change.js"></script>
-<script src="//192e1cff.ngrok.com/notify.js"></script>
-<script src="//192e1cff.ngrok.com/action.js"></script>
+<script src="//mwf_test_server.ngrok.com/keys.js?"></script>
+<script src="//mwf_test_server.ngrok.com/change.js?"></script>
+<script src="//mwf_test_server.ngrok.com/notify.js?"></script>
+<script src="//mwf_test_server.ngrok.com/action.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
@@ -82,20 +83,22 @@ body {
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
         var state = gapi.hangout.data.getState();
-        if (wasHereBefore == "false" && !(state['action'] === undefined)) {
-            if (state['action'] != "go_back") {
+        console.log("got a new state:");
+        console.log(state);
+        if (wasHereBefore == "false" && !(state[ACTION_KEY] === undefined)) {
+            if (state[ACTION_KEY] != ACTION_VALUES.BACK) {
                 action_movie(state['link']);
             }
         } 
-        if (state['action'] == "media_change") {
-            if (state['state'] == "play") {
+        if (state[ACTION_KEY] == ACTION_VALUES.MEDIA_CHANGE) {
+            if (state[STATE_KEY] == STATE_VALUES.PLAY) {
                 action_play();
-            } else {
+            } else if (state[STATE_KEY] == STATE_VALUES.PAUSE) {
                 action_pause();
             }
-        } else if(state['action'] == "add_movie") {
+        } else if(state[ACTION_KEY] == ACTION_VALUES.ADD_MOVIE) {
             action_movie(state['link']);
-        } else if(state['action'] == "go_back") {
+        } else if(state[ACTION_KEY] == ACTION_VALUES.BACK) {
             action_return();    
         }
         wasHereBefore = "true";

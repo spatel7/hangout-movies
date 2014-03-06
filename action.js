@@ -13,14 +13,14 @@ function action_movie(link) {
 	toggleMovie('movie');
 	var start_time = 0;
 	var state = gapi.hangout.data.getState();
-	document.getElementById('vidplayer').addEventListener('loadedmetadata', function() {
+	document.getElementById('vidplayer').addEventListener('canplay', function() {
 		if (state['state'] == "pause") {
 			start_time = parseInt(state['pause_time']);
 		} else if (state['state'] == "play") {
 			difference = (new Date()).getTime() - parseInt(state['play_time_global']);
 			start_time = parseInt(state['play_time']) + (difference/1000);
 		}
-  		document.getElementById('vidplayer').currentTime = start_time;
+  		this.currentTime = start_time;
   		if (state['state'] == "play") {
   			action_play();
   		}

@@ -1,19 +1,34 @@
 function notify_play() {
 	var curr_time = (new Date()).getTime();
 	var vidplayer_time = document.getElementById('vidplayer').currentTime;
-	gapi.hangout.data.submitDelta( {"action": "media_change", "state": "play", "play_time": vidplayer_time.toString(), "play_time_global": curr_time.toString()} );
+	var newState = {};
+	newState[ACTION_KEY] = ACTION_VALUES.MEDIA_CHANGE;
+	newState[STATE_KEY] = STATE_VALUES.PLAY;
+	newState["play_time"] = vidplayer_time.toString();
+	newState["play_time_global"] = curr_time.toString();	
+	gapi.hangout.data.submitDelta(newState);
 }
 
 function notify_pause() {
 	var vidplayer_time = document.getElementById('vidplayer').currentTime;
-	gapi.hangout.data.submitDelta( {"action": "media_change", "state": "pause", "pause_time": vidplayer_time.toString()} );
+	var newState = {};
+	newState[ACTION_KEY] = ACTION_VALUES.MEDIA_CHANGE;
+	newState[STATE_KEY] = STATE_VALUES.PAUSE;
+	newState["pause_time"] = vidplayer_time.toString();	
+	gapi.hangout.data.submitDelta(newState);
 }
 
 function notify_movie(link) {
 	var state = gapi.hangout.data.getState();
-	gapi.hangout.data.submitDelta( {"action": "add_movie", "link": link, "state": "undefined"} );
+	var newState = {};
+	newState[ACTION_KEY] = ACTION_VALUES.ADD_MOVIE;
+	newState["link"] = link;
+	newState[STATE_KEY] = "undefined";
+	gapi.hangout.data.submitDelta(newState);
 }
 
 function notify_return() {
-    gapi.hangout.data.submitDelta( {"action": "go_back"} );
+	var newState = {};
+	newState[ACTION_KEY] = ACTION_VALUES.BACK;
+    gapi.hangout.data.submitDelta(newState);
 }
