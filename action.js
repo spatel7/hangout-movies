@@ -14,17 +14,58 @@ function action_movie(link) {
 	var start_time = 0;
 	var state = gapi.hangout.data.getState();
 	document.getElementById('vidplayer').addEventListener('canplay', function() {
-		if (state['state'] == "pause") {
+		if (state[STATE_KEY] == STATE_VALUES.PAUSE) {
 			start_time = parseInt(state['pause_time']);
-		} else if (state['state'] == "play") {
+		} else if (state[STATE_KEY] == STATE_VALUES.PLAY) {
 			difference = (new Date()).getTime() - parseInt(state['play_time_global']);
 			start_time = parseInt(state['play_time']) + (difference/1000);
 		}
   		this.currentTime = start_time;
-  		if (state['state'] == "play") {
+  		if (state[STATE_KEY] == STATE_VALUES.PLAY) {
   			action_play();
   		}
 }, false);
+}
+
+function action_add_movie(link) {
+	var checkbox = document.createElement('input');
+	checkbox.type = 'checkbox';
+	checkbox.name = 'movie_choice';
+	checkbox.value = link;
+	checkbox.onclick = function() { process_checkbox(this) };
+
+	var label = document.createElement('label');
+	label.innerHTML = link;
+
+	document.getElementById('vote_div').appendChild(checkbox);
+	document.getElementById('vote_div').appendChild(label);
+	document.getElementById('vote_div').appendChild(document.createElement('br'));
+}
+
+function process_checkbox(checkbox) {
+	link = checkbox.value;
+	if (checkbox.checked) {
+		notify_vote_for(link);
+	} else {
+		notify_vote_against(link);
+	}
+}
+
+function play_most_voted_movie() {
+	var state = gapi.hangout.data.getState();
+	var maxVotes = -100;
+	var link;
+	for (var key in state) {
+  		if (state.hasOwnProperty(key)) {
+    		if (key != 'pause_time' && key != 'play_time' && key != 'play_time_global' && key != 'link' && key != ACTION_KEY && key != STATE_KEY) {
+    			if (state[key] > maxVotes) {
+    				maxVotes = state[key];
+    				link = key;
+    			}
+    		}
+    	}
+  	}
+  	notify_movie(link); // TODO: NOTIFY EVERYONE!
 }
 
 function action_return() {

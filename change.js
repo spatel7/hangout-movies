@@ -6,8 +6,12 @@ function change_pause() {
 	notify_pause();
 }
 
-function change_movie(link) {
+function change_play_movie(link) {
     notify_movie(link);
+}
+
+function change_add_movie(link) {
+	notify_add_movie(link);
 }
 
 function change_return() {

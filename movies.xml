@@ -23,7 +23,7 @@
 <script src="//mwf_test_server.ngrok.com/keys.js?"></script>
 <script src="//mwf_test_server.ngrok.com/change.js?"></script>
 <script src="//mwf_test_server.ngrok.com/notify.js?"></script>
-<script src="//mwf_test_server.ngrok.com/action.js"></script>
+<script src="//mwf_test_server.ngrok.com/action.js?"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
@@ -96,7 +96,10 @@ body {
             } else if (state[STATE_KEY] == STATE_VALUES.PAUSE) {
                 action_pause();
             }
-        } else if(state[ACTION_KEY] == ACTION_VALUES.ADD_MOVIE) {
+        } else if(state[ACTION_KEY] == ACTION_VALUES.ADD_MOVIE && state["new_movie"] == "true") {
+            //action_movie(state['link']);
+            action_add_movie(state['link']);
+        } else if(state[ACTION_KEY] == ACTION_VALUES.PLAY_MOVIE) {
             action_movie(state['link']);
         } else if(state[ACTION_KEY] == ACTION_VALUES.BACK) {
             action_return();    
@@ -106,7 +109,7 @@ body {
 
     options = {
         success: function(files) {
-            change_movie(files[0].link);
+            change_add_movie(files[0].link);
         },
         cancel: function() {},
         linkType: "direct", // or "direct"
@@ -139,6 +142,9 @@ body {
             <a href='#' onclick="javascript:change_return();"><font color='white'>Return to main page</font></a>
         </div>
         <div id='movie'></div>
+        <div id='vote_div'>
+        </div>
+        <button onclick='javascript:play_most_voted_movie();'>Play Most Voted Movie</button>
     </div>
 </body>
 ]]>
