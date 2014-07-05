@@ -20,10 +20,10 @@
     <Content type="html"><![CDATA[     
 
 <html>
-<script src="/keys.js?"></script>
-<script src="/change.js?"></script>
-<script src="/notify.js?"></script>
-<script src="/action.js?"></script>
+<script src="https://raw.githubusercontent.com/spatel7/hangout-movies/master/keys.js?"></script>
+<script src="https://raw.githubusercontent.com/spatel7/hangout-movies/master/change.js?"></script>
+<script src="https://raw.githubusercontent.com/spatel7/hangout-movies/master/notify.js?"></script>
+<script src="https://raw.githubusercontent.com/spatel7/hangout-movies/master/action.js?"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
