@@ -6,17 +6,20 @@ function notify_play() {
 	newState[STATE_KEY] = STATE_VALUES.PLAY;
 	newState["play_time"] = vidplayer_time.toString();
 	newState["play_time_global"] = curr_time.toString();
-	newState["new_movie"] = "false";		
+	newState["new_movie"] = "false";
+	newState['call_time'] = curr_time.toString();		
 	gapi.hangout.data.submitDelta(newState);
 }
 
 function notify_pause() {
+	var curr_time = (new Date()).getTime();
 	var vidplayer_time = document.getElementById('vidplayer').currentTime;
 	var newState = {};
 	newState[ACTION_KEY] = ACTION_VALUES.MEDIA_CHANGE;
 	newState[STATE_KEY] = STATE_VALUES.PAUSE;
 	newState["pause_time"] = vidplayer_time.toString();	
 	newState["new_movie"] = "false";	
+	newState['call_time'] = curr_time.toString();		
 	gapi.hangout.data.submitDelta(newState);
 }
 

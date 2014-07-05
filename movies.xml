@@ -20,10 +20,10 @@
     <Content type="html"><![CDATA[     
 
 <html>
-<script src="//mwf_test_server.ngrok.com/keys.js?"></script>
-<script src="//mwf_test_server.ngrok.com/change.js?"></script>
-<script src="//mwf_test_server.ngrok.com/notify.js?"></script>
-<script src="//mwf_test_server.ngrok.com/action.js?"></script>
+<script src="/keys.js?"></script>
+<script src="/change.js?"></script>
+<script src="/notify.js?"></script>
+<script src="/action.js?"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="zyys2sz808tigvj"></script>
 <style type="text/css">
@@ -49,6 +49,10 @@ body {
     display: none;
     margin-top: 5px;
 }
+#main #vote {
+    display: none;
+    margin-top: 5px;
+}
 
 .button {
   border-radius: 3px;
@@ -70,15 +74,18 @@ body {
         var movie = document.getElementById('movie');
         var back = document.getElementById('back');
         var selection = document.getElementById('selection');
+        var vote = document.getElementById("vote");
         if (arg == "movie") {
             movie.style.display = "block";
             back.style.display = "block";
             selection.style.display = "none";
+            vote.display = "none";
         } else {
             movie.style.display = "none";
             movie.innerHTML = "";
             back.style.display = "none";
             selection.style.display = "block";
+            vote.display="block";
         }
     }
     gapi.hangout.data.onStateChanged.add( function(event) {
@@ -134,7 +141,7 @@ body {
     <div id='main'>
         <div id='selection'>
             <font color='#181818' style='font-size: 60px;'>Movies <b>with Friends</b></font><br>
-            <font color='#181818' style='font-size: 30px;'>Watch movies with your friends through G+ Hangouts and Dropbox.</font><br><br>
+            <font color='#181818' style='font-size: 30px;'>Watch movies with your friends with G+ Hangouts and Dropbox.</font><br><br>
             <font color="#181818" style='font-size: 30px;'><b>Step one: </b> pick a movie!</font><br>
             <div id='button2' style='padding:3px; background-color:#666666; width: 161px; margin-top: 5px;'></div>
         </div>
@@ -142,10 +149,9 @@ body {
             <a href='#' onclick="javascript:change_return();"><font color='white'>Return to main page</font></a>
         </div>
         <div id='movie'></div>
-        <div id='vote_div'>
+        <div id='vote'>
+            <button onclick='javascript:play_most_voted_movie();'>Play Most Voted Movie</button></div>
         </div>
-        <button onclick='javascript:play_most_voted_movie();'>Play Most Voted Movie</button>
-    </div>
 </body>
 ]]>
 </Content>

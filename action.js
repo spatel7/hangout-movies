@@ -4,10 +4,11 @@ function action_pause() {
 
 function action_play() {
 	document.getElementById("vidplayer").play();
+	alert("Paused by action play");
 }
 
 function action_movie(link) {
-	var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:change_pause();' onplay='javascript:change_play();'><source src='"+ link +"' type='video/mp4'></video>";
+	var src = "<video id='vidplayer' width='640' height='360' controls onpause='javascript:change_pause();' onplay='javascript:change_play();' onstalled='javascript:change_stalled();'><source src='"+ link +"' type='video/mp4'></video>";
     var movie = document.getElementById('movie');
     movie.innerHTML = src;
 	toggleMovie('movie');
@@ -19,6 +20,7 @@ function action_movie(link) {
 		} else if (state[STATE_KEY] == STATE_VALUES.PLAY) {
 			difference = (new Date()).getTime() - parseInt(state['play_time_global']);
 			start_time = parseInt(state['play_time']) + (difference/1000);
+			alert("Starting at: " + start_time);
 		}
   		this.currentTime = start_time;
   		if (state[STATE_KEY] == STATE_VALUES.PLAY) {
@@ -35,11 +37,13 @@ function action_add_movie(link) {
 	checkbox.onclick = function() { process_checkbox(this) };
 
 	var label = document.createElement('label');
-	label.innerHTML = link;
+	label.innerHTML = link.substr(link.lastIndexOf("/")+1);
 
-	document.getElementById('vote_div').appendChild(checkbox);
-	document.getElementById('vote_div').appendChild(label);
-	document.getElementById('vote_div').appendChild(document.createElement('br'));
+	document.getElementById('vote').style.display = "block";
+	document.getElementById('vote').appendChild(checkbox);
+	document.getElementById('vote').appendChild(label);
+	document.getElementById('vote').appendChild(document.createElement('br'));
+	alert("Link: " + link);
 }
 
 function process_checkbox(checkbox) {
@@ -57,7 +61,7 @@ function play_most_voted_movie() {
 	var link;
 	for (var key in state) {
   		if (state.hasOwnProperty(key)) {
-    		if (key != 'pause_time' && key != 'play_time' && key != 'play_time_global' && key != 'link' && key != ACTION_KEY && key != STATE_KEY) {
+    		if (key != 'pause_time' && key != 'play_time' && key != 'play_time_global' && key != 'link' && key != ACTION_KEY && key != STATE_KEY && key != "call_time") {
     			if (state[key] > maxVotes) {
     				maxVotes = state[key];
     				link = key;
